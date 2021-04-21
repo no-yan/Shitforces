@@ -9,9 +9,12 @@
     "format": "sort-package-json && prettier --write \"**/{.*/,}*.{css,html,js,json,jsx,md,scss,ts,tsx,yaml,yml}\"",
     "lint": "eslint \"{src,__tests__}/**/*.{js,jsx,ts,tsx}\"",
     "lint-fix": "npm run lint --fix",
-    "start": "npm-run-all -p start:web start:mock-api",
+    "start": "npm-run-all -p start:*",
     "start:web": "set PORT=3000 && react-scripts start",
     "start:mock-api": "agreed-server --path agreed.js --port 8080 --cors",
+    "doc": "npm-run-all -p doc:*",
+    "doc:noopen": "agreed-ui --path ./agreed.js --port 3031",
+    "doc:browser": "opener http://localhost:3031/",
     "test": "react-scripts test",
     "typecheck": "tsc --noEmit",
     "postinstall": "typesync || :"
