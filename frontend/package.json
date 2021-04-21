@@ -9,11 +9,14 @@
     "format": "sort-package-json && prettier --write \"**/{.*/,}*.{css,html,js,json,jsx,md,scss,ts,tsx,yaml,yml}\"",
     "lint": "eslint \"{src,__tests__}/**/*.{js,jsx,ts,tsx}\"",
     "lint-fix": "npm run lint --fix",
-    "start": "react-scripts start",
+    "start": "npm-run-all -p start:web start:mock-api",
+    "start:web": "set PORT=3000 && react-scripts start",
+    "start:mock-api": "agreed-server --path agreed.js --port 8080 --cors",
     "test": "react-scripts test",
     "typecheck": "tsc --noEmit",
     "postinstall": "typesync || :"
   },
+  "proxy": "http://localhost:8080",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
@@ -63,6 +66,7 @@
     "@types/fs-extra": "9.0.11",
     "@types/jquery": "3.5.5",
     "@types/node": "14.14.37",
+    "@types/opener": "1.4.0",
     "@types/prettier": "2.2.1",
     "@types/prop-types": "15.7.2",
     "@types/react": "17.0.3",
@@ -77,6 +81,8 @@
     "eslint-plugin-import": "2.22.1",
     "husky": "4.3.8",
     "lint-staged": "10.5.4",
+    "npm-run-all": "4.1.5",
+    "opener": "1.5.2",
     "prettier": "2.2.1",
     "prop-types": "15.7.2",
     "sort-package-json": "1.49.0",

@@ -32,6 +32,7 @@ const mockContestRankingListItemFactory = (object = {}) => ({
   ...object,
 });
 
+// ここからAPI定義
 module.exports = [
   {
     request: {
